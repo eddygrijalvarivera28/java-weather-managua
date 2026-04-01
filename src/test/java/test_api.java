@@ -1,4 +1,3 @@
-import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
 public class test_api {
@@ -66,23 +65,12 @@ public class test_api {
     }
 }
 class test{
-    private coord coord;
-
-    public coord getCoord() {
+    private clima.models.coord coord;
+    public clima.models.coord getCoord() {
         return coord;
     }
 
-    public void setCoord(coord coord) {
+    public void setCoord(clima.models.coord coord) {
         this.coord = coord;
     }
-}
-class coord{
-    private long lat;
-    private double lon;
-
-    public double getLat(){return lat;}
-    public void setLat(long lat){this.lat = lat;}
-
-    public double getLon() {return lon;}
-    public void setLon(double lon) {this.lon = lon;}
 }

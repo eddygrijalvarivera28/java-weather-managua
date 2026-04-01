@@ -1,38 +1,34 @@
-
 import io.github.cdimascio.dotenv.Dotenv;
+import tools.jackson.databind.ObjectMapper;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.*;
-import java.util.Scanner;
+static Dotenv dotenv = Dotenv.load();
 
-public class test_api_call {
-    static Dotenv dotenv = Dotenv.load();
+static final String API_KEY = dotenv.get("API_KEY");
+static final String BASE_URL_CITY_API = "https://api.openweathermap.org/geo/1.0/direct?q=";
 
-    static final String API_KEY = dotenv.get("API_KEY");
-    static final  String BASE_URL_CITY_API = "https://api.openweathermap.org/geo/1.0/direct?q=";
-    public static void main(String[] args) {
-        StringBuilder urlApi = new StringBuilder();
-        String city = "Managua";
-        urlApi.append(BASE_URL_CITY_API).append(city).append("&limit=1").append("&appid=").append(API_KEY);
-        System.out.println(urlApi);
-        try {
-            URL url = new URI(urlApi.toString()).toURL();
-            HttpURLConnection conn =(HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            System.out.println(conn.getResponseCode());
+public static void main(String[] args) {
+    StringBuilder urlApi = new StringBuilder();
+    ObjectMapper mapper = new ObjectMapper();
+    String city = "New+York";
+    urlApi.append(BASE_URL_CITY_API).append(city).append("&limit=1").append("&appid=").append(API_KEY);
+    System.out.println(urlApi);
+    try {
+        URL url = new URI(urlApi.toString()).toURL();
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        System.out.println(conn.getResponseCode());
 
-            StringBuilder Json = new StringBuilder();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null){
-                Json.append(line);
-            }
-            System.out.println(Json);
-        } catch (Exception e) {
-            e.printStackTrace();
+        StringBuilder Json = new StringBuilder();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            Json.append(line);
         }
-
-
+        Object mapped = mapper.readValue(Json.toString(), Object.class);
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(mapped));
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+
 }
