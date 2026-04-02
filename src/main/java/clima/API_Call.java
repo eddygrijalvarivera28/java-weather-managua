@@ -1,6 +1,6 @@
 package clima;
 
-import clima.models.coord;
+import clima.models.Coord;
 import io.github.cdimascio.dotenv.Dotenv;
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.ObjectMapper;
@@ -22,13 +22,33 @@ public class API_Call  {
     public static final HttpClient client = HttpClient.newHttpClient();
 
     //Gets the coords and returns the Json
-    public static String getJson(clima.models.coord coordinates){
+    public static String getData(Coord coordinates){
+        //Establishing latitude and longitude of location
+        final double lat = coordinates.getLat();
+        final double lon = coordinates.getLon();
 
-        return null;
+        //Creating the API URL
+        StringBuilder url = new StringBuilder("https://api.openweathermap.org/data/2.5/forecast?lat=")
+                .append(Double.toString(lat))
+                .append("&lon=")
+                .append(Double.toString(lon))
+                .append("&appid=")
+                .append(API_KEY);
+
+        //Creating the request
+
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url.toString()))
+                    .build();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //Gets the city and returns the coords
-    public static clima.models.coord getCoords(String city){
+    public static Coord getCoords(String city){
         //Cleaning the city input
         city = city.trim().replace(" ", "+");
 
@@ -38,13 +58,14 @@ public class API_Call  {
         url.append(city).append("&limit=1").append("&appid=").append(API_KEY);
 
         try{
+            //Request for the connection
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url.toString()))
                     .build();
 
-            coord[] coords = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+            Coord[] coords = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                         .thenApply(HttpResponse::body)
-                        .thenApply(jsonString -> mapper.readValue(jsonString, coord[].class))
+                        .thenApply(jsonString -> mapper.readValue(jsonString, Coord[].class))
                         .get();
             return coords[0];
         }catch (Exception e) {

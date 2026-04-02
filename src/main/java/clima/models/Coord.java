@@ -1,6 +1,6 @@
 package clima.models;
 
-public class coord {
+public class Coord {
     private double lat;
     private double lon;
 
@@ -17,4 +17,5 @@ public class coord {
     public void setLon(double lon) {
         this.lon = lon;
     }
+
 }

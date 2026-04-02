@@ -1,3 +1,4 @@
+import clima.models.Coord;
 import tools.jackson.databind.ObjectMapper;
 
 public class test_api {
@@ -65,12 +66,12 @@ public class test_api {
     }
 }
 class test{
-    private clima.models.coord coord;
-    public clima.models.coord getCoord() {
+    private Coord coord;
+    public Coord getCoord() {
         return coord;
     }
 
-    public void setCoord(clima.models.coord coord) {
+    public void setCoord(Coord coord) {
         this.coord = coord;
     }
 }
