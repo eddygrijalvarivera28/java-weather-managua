@@ -1,3 +1,5 @@
+package clima;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,3 +21,6 @@ public class WeatherGUI extends Application {
         launch();
     }
 }
+class GUIStarter {
+    public static void main(final String[] args) {
+        WeatherGUI.main(args);}}

@@ -7,7 +7,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ClimateData {
     public long dt;
-    public Main main;
+    public MainWeatherData main;
     public List<Weather> weather;
     public Wind wind;
     public int pop;

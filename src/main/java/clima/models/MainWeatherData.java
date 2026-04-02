@@ -3,7 +3,7 @@ package clima.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Main {
+public class MainWeatherData {
     public double temp;
     public double feels_like;
     public double temp_min;
