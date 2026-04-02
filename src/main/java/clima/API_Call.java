@@ -55,6 +55,7 @@ public class API_Call {
     }
 
         //Gets the coords and returns the Json
+
         public static ClimateDataResponse getData (Coord coordinates){
             //Establishing latitude and longitude of location
             final double lat = coordinates.lat;

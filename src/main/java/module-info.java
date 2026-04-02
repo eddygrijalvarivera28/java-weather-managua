@@ -8,4 +8,8 @@ module clima {
     requires tools.jackson.core;
 
     opens clima.models to tools.jackson.core, tools.jackson.databind;
+    opens clima.ui to javafx.fxml;
+
+    exports clima.models;
+    exports clima.ui;
 }
