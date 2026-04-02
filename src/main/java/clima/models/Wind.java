@@ -1,7 +1,10 @@
 package clima.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Wind {
-    private double speed;
-    private double deg;
-    private double gust;
+    public double speed;
+    public double deg;
+    public double gust;
 }

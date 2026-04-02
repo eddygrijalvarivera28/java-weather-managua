@@ -1,5 +1,6 @@
 package clima;
 
+import clima.models.ClimateDataResponse;
 import clima.models.Coord;
 import io.github.cdimascio.dotenv.Dotenv;
 import tools.jackson.databind.DeserializationFeature;
@@ -22,10 +23,10 @@ public class API_Call  {
     public static final HttpClient client = HttpClient.newHttpClient();
 
     //Gets the coords and returns the Json
-    public static String getData(Coord coordinates){
+    public static ClimateDataResponse getData(Coord coordinates){
         //Establishing latitude and longitude of location
-        final double lat = coordinates.getLat();
-        final double lon = coordinates.getLon();
+        final double lat = coordinates.lat;
+        final double lon = coordinates.lon;
 
         //Creating the API URL
         StringBuilder url = new StringBuilder("https://api.openweathermap.org/data/2.5/forecast?lat=")
@@ -42,6 +43,12 @@ public class API_Call  {
                     .uri(URI.create(url.toString()))
                     .build();
 
+            ClimateDataResponse test = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body)
+                    .thenApply(jsonString -> mapper.readValue(jsonString, ClimateDataResponse.class))
+                    .get();
+
+            return test;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -1,10 +1,13 @@
 package clima.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ClimateDataResponse {
-    private int cod;
-    private String message;
-    private int cnt;
-    private List<ClimateData> climateData;
+    public int cod;
+    public String message;
+    public int cnt;
+    public List<ClimateData> list;
 }
