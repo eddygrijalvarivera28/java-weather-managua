@@ -1,6 +1,8 @@
 package clima.ui;
 
 import clima.API_Call;
+import clima.models.ClimateData;
+import clima.models.ClimateDataResponse;
 import clima.models.Coord;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -10,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +23,8 @@ public class WeatherGUI extends Application{
     public TextField texto;
     @FXML
     public Button boton_Buscar;
+    @FXML
+    public Text cajaDeTexto;
 
     @Override
     public void start(Stage stage) {
@@ -31,6 +36,8 @@ public class WeatherGUI extends Application{
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            API_Call.client.close();
         }
     }
 
@@ -43,6 +50,8 @@ public class WeatherGUI extends Application{
         if (coords != null) {
             System.out.println("Exito!");
             System.out.println(coords.lat + " " + coords.lon);
+            ClimateData response = API_Call.getCurrentData(coords);
+            cajaDeTexto.setText(Double.toString(response.main.temp));
         }
     }
 
