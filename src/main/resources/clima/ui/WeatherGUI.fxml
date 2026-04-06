@@ -3,12 +3,33 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clima.ui.WeatherGUI">
    <children>
       <TextField fx:id="texto" layoutX="230.0" layoutY="84.0" AnchorPane.bottomAnchor="279.2" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="228.39999999999998" AnchorPane.topAnchor="84.0" />
-      <Button fx:id="boton_Buscar" layoutX="273.0" layoutY="146.0" mnemonicParsing="false" onAction="#getCoords" text="Button" />
-      <Text fx:id="cajaDeTexto" layoutX="287.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Button fx:id="boton_Buscar" alignment="CENTER" layoutX="273.0" layoutY="146.0" mnemonicParsing="false" onAction="#getCoords" text="Button" />
+      <GridPane alignment="CENTER" layoutX="200.0" layoutY="225.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fx:id="cajaDeTexto" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="text0_cero_uno" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
+            <Text fx:id="texto_uno_cero" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="1" />
+            <Text fx:id="texto_uno_uno" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text fx:id="texto_cero_dos" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="2" />
+            <Text fx:id="texto_uno_dos" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

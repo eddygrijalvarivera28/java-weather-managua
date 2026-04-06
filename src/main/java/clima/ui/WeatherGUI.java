@@ -25,6 +25,11 @@ public class WeatherGUI extends Application{
     public Button boton_Buscar;
     @FXML
     public Text cajaDeTexto;
+    public Text text0_cero_uno;
+    public Text texto_uno_cero;
+    public Text texto_uno_uno;
+    public Text texto_cero_dos;
+    public Text texto_uno_dos;
 
     @Override
     public void start(Stage stage) {
@@ -36,8 +41,6 @@ public class WeatherGUI extends Application{
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
-            API_Call.client.close();
         }
     }
 
@@ -52,6 +55,12 @@ public class WeatherGUI extends Application{
             System.out.println(coords.lat + " " + coords.lon);
             ClimateData response = API_Call.getCurrentData(coords);
             cajaDeTexto.setText(Double.toString(response.main.temp));
+            text0_cero_uno.setText(new java.util.Date(response.dt*1000).toString());
+            texto_uno_cero.setText(response.weather.getFirst().main);
+            texto_uno_uno.setText(Double.toString(response.wind.speed));
+            texto_uno_dos.setText(response.main.temp_min + "°");
+            texto_cero_dos.setText(response.main.temp_max + "°");
+
         }
     }
 

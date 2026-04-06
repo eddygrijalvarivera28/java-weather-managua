@@ -101,7 +101,7 @@ public class API_Call {
                 HttpRequest request = HttpRequest.newBuilder()
                         .uri(URI.create(url.toString()))
                         .build();
-
+                //Returns the coords object
                 Coord[] coords = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                         .thenApply(HttpResponse::body)
                         .thenApply(jsonString -> mapper.readValue(jsonString, Coord[].class))
