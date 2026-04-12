@@ -12,6 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -38,6 +42,14 @@ public class WeatherGUI extends Application{
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Weather Application");
+
+//            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/clima/ui/Parque-Central.jpg")));
+            Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/clima/ui/images.png")));
+//            ImageView view = new ImageView(image);
+//            ((Pane) root).getChildren().add(view);
+//            view.toBack();
+
+            stage.getIcons().add(image2);
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -52,7 +64,7 @@ public class WeatherGUI extends Application{
         Coord coords = API_Call.getCoords(texto.getText());
         if (coords != null) {
             System.out.println("Exito!");
-            System.out.println(coords.lat + " " + coords.lon);
+            System.out.println(coords.lat + " " + coords.lon + " " + coords.country);
             ClimateData response = API_Call.getCurrentData(coords);
             cajaDeTexto.setText(Double.toString(response.main.temp));
             text0_cero_uno.setText(new java.util.Date(response.dt*1000).toString());

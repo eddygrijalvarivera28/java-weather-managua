@@ -6,4 +6,5 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Coord {
     public double lat;
     public double lon;
+    public String country;
 }
