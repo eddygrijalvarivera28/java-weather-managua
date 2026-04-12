@@ -44,7 +44,7 @@ public class WeatherGUI extends Application{
             stage.setTitle("Weather Application");
 
 //            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/clima/ui/Parque-Central.jpg")));
-            Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/clima/ui/images.png")));
+            Image image2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/clima/ui/monito.jpg")));
 //            ImageView view = new ImageView(image);
 //            ((Pane) root).getChildren().add(view);
 //            view.toBack();
@@ -61,23 +61,37 @@ public class WeatherGUI extends Application{
     }
     @FXML
     public void getCoords(ActionEvent event) {
-        Coord coords = API_Call.getCoords(texto.getText());
-        if (coords != null) {
-            System.out.println("Exito!");
-            System.out.println(coords.lat + " " + coords.lon + " " + coords.country);
-            ClimateData response = API_Call.getCurrentData(coords);
-            cajaDeTexto.setText(Double.toString(response.main.temp));
-            text0_cero_uno.setText(new java.util.Date(response.dt*1000).toString());
-            texto_uno_cero.setText(response.weather.getFirst().main);
-            texto_uno_uno.setText(Double.toString(response.wind.speed));
-            texto_uno_dos.setText(response.main.temp_min + "°");
-            texto_cero_dos.setText(response.main.temp_max + "°");
+        Thread thread = new Thread(() -> {
+            try {
+                Coord coords = API_Call.getCoords(texto.getText());
+                if (coords != null) {
+                    System.out.println("Exito!");
+                    System.out.println(coords.lat + " " + coords.lon + " " + coords.country);
+                    ClimateData response = API_Call.getCurrentData(coords);
 
-        }
+                    if (response != null) {
+                        javafx.application.Platform.runLater(() -> {
+                            updateUiCurrent(response);
+                            System.out.println("Exito");
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread.setDaemon(true);
+        thread.start();
     }
 
 
+
+private void updateUiCurrent(ClimateData response){
+    cajaDeTexto.setText(Double.toString(response.main.temp));
+    text0_cero_uno.setText(new java.util.Date(response.dt*1000).toString());
+    texto_uno_cero.setText(response.weather.getFirst().main);
+    texto_uno_uno.setText(Double.toString(response.wind.speed));
+    texto_uno_dos.setText(response.main.temp_min + "°");
+    texto_cero_dos.setText(response.main.temp_max + "°");
+    }
 }
-//class GUIStarter {
-//    public static void main(final String[] args) {
-//        WeatherGUI.main(args);}}
