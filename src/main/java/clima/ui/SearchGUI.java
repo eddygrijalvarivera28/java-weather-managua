@@ -43,7 +43,7 @@ public void getCoords(ActionEvent event){
                         javafx.application.Platform.runLater(() -> {
                             System.out.println("Exito");
                             try {
-                                setScene2(event, response);
+                                setScene2(event, response, caja_Buscar.getText());
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
@@ -63,12 +63,12 @@ public void getCoords(ActionEvent event){
 
 
 @FXML
-private void setScene2(ActionEvent event, ClimateData response) throws IOException {
+private void setScene2(ActionEvent event, ClimateData response, String city) throws IOException {
     FXMLLoader loader = new FXMLLoader((getClass().getResource("/clima/ui/DisplayData.fxml")));
     Parent root = loader.load();
 
     DisplayGUI displayGUI = loader.getController();
-    displayGUI.updateData(response);
+    displayGUI.updateData(response,city);
 
     Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     stage.setScene(new Scene(root));

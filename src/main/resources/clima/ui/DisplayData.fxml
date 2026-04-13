@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -8,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clima.ui.DisplayGUI">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clima.ui.DisplayGUI">
    <children>
-      <Text fx:id="cityText" layoutX="170.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prueba" textAlignment="CENTER" wrappingWidth="260.0">
+      <Text fx:id="cityText" layoutX="40.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prueba" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="519.2000122070312" AnchorPane.bottomAnchor="256.5" AnchorPane.leftAnchor="39.200000000000045" AnchorPane.rightAnchor="40.79998779296875">
          <font>
-            <Font size="70.0" />
+            <Font name="Franklin Gothic Demi Cond" size="70.0" />
          </font>
       </Text>
       <GridPane alignment="CENTER" layoutX="150.0" layoutY="169.0">
@@ -28,12 +30,18 @@
          <children>
             <Text fx:id="texto_0_1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Text fx:id="texto_0_0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Text fx:id="texto_0_2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Text fx:id="texto_1_0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="1" />
             <Text fx:id="texto_1_1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Text fx:id="texto_1_2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ImageView fx:id="imagen_0_2" fitHeight="38.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
          </children>
       </GridPane>
-      <Button fx:id="buttonBack" layoutX="274.0" layoutY="266.0" mnemonicParsing="false" onAction="#PressButtonBack" text="Button" />
+      <Button fx:id="buttonBack" alignment="CENTER" contentDisplay="CENTER" layoutX="195.0" layoutY="269.0" mnemonicParsing="false" onAction="#PressButtonBack" text="rEGRESAR A CUANDO ERA FELIZ" textAlignment="CENTER">
+         <font>
+            <Font name="Impact" size="12.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect></Button>
    </children>
 </AnchorPane>
