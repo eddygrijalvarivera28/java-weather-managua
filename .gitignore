@@ -39,3 +39,6 @@ build/
 
 ### APIS ###
 .env
+
+### DIRECTORIO MIERDA ###
+/.idea
