@@ -108,7 +108,7 @@ public class API_Call {
                         .get();
                 return coords[0];
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("Please write something!");
             }
             return null;
 

@@ -1,31 +1,26 @@
 package clima;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import clima.models.ClimateData;
 import clima.models.ClimateDataResponse;
 import clima.models.Coord;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class MainWeatherApp {
-    public static void main(String[] args) throws IOException {
-        //Inputs the city to get the coordinates API
-        Coord coord = API_Call.getCoords("Managua");
-        if (coord == null){
-            throw new IOException("Error parsing JSON FIle");
-        }
-        System.out.println(coord.lat + " " + coord.lon);
+public class MainWeatherApp extends Application {
+    public static void main(String[] args) throws IOException {launch();}
 
-        ClimateData single_test = API_Call.getCurrentData(coord);
-        ClimateDataResponse test = API_Call.getData(coord);
-
-        System.out.println("Current");
-        System.out.println(single_test.main.temp + "°  " + new java.util.Date(single_test.dt *1000));
-        System.out.println("XXXXXXXXXXXXXXXXXXXXX");
-        for (ClimateData data : test.list) {
-            java.util.Date time = new java.util.Date(data.dt *1000);
-            System.out.println(data.main);
-            System.out.println(data.main.temp + "°  " + time);
-            System.out.println("=========================");
-        }
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/clima/ui/WeatherGUI.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
+

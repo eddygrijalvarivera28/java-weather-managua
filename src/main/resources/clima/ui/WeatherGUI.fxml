@@ -6,30 +6,27 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clima.ui.WeatherGUI">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clima.ui.SearchGUI">
    <children>
-      <TextField fx:id="texto" layoutX="230.0" layoutY="84.0" AnchorPane.bottomAnchor="279.2" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="228.39999999999998" AnchorPane.topAnchor="84.0" />
-      <Button fx:id="boton_Buscar" alignment="CENTER" layoutX="273.0" layoutY="146.0" mnemonicParsing="false" onAction="#getCoords" text="Button" />
+      <TextField fx:id="caja_Buscar" alignment="CENTER" layoutX="230.0" layoutY="84.0" AnchorPane.bottomAnchor="279.2" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="228.39999999999998" AnchorPane.topAnchor="84.0" />
+      <Button fx:id="boton_Buscar" alignment="CENTER" contentDisplay="CENTER" layoutX="273.0" layoutY="146.0" mnemonicParsing="false" onAction="#getCoords" style="-fx-background-color: pink;" text="Search" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
       <GridPane alignment="CENTER" layoutX="200.0" layoutY="225.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
-            <Text fx:id="cajaDeTexto" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="text0_cero_uno" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
-            <Text fx:id="texto_uno_cero" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="1" />
-            <Text fx:id="texto_uno_uno" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text fx:id="texto_cero_dos" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="2" />
-            <Text fx:id="texto_uno_dos" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         </children>
       </GridPane>
+      <Text fx:id="error_text" layoutX="176.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="249.5999755859375" />
    </children>
 </AnchorPane>
