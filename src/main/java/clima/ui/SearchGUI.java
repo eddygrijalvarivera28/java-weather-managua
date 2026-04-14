@@ -2,6 +2,7 @@ package clima.ui;
 
 import clima.API.API_Call;
 import clima.models.ClimateData;
+import clima.models.ClimateDataResponse;
 import clima.models.Coord;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchGUI {
     //SCENE 1
@@ -37,12 +40,13 @@ public void getCoords(ActionEvent event){
                     System.out.println("Exito!");
                     System.out.println(coords.lat + " " + coords.lon + " " + coords.country);
                     ClimateData response = API_Call.getCurrentData(coords);
+                    ClimateDataResponse multi_response = API_Call.getData(coords);
 
                     if (response != null) {
                         javafx.application.Platform.runLater(() -> {
                             System.out.println("Exito");
                             try {
-                                setScene2(event, response, caja_Buscar.getText());
+                                setScene2(event, response, multi_response, caja_Buscar.getText());
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
@@ -62,13 +66,16 @@ public void getCoords(ActionEvent event){
 
 
 @FXML
-private void setScene2(ActionEvent event, ClimateData response, String city) throws IOException {
+private void setScene2(ActionEvent event, ClimateData response, ClimateDataResponse multi_response, String city) throws IOException {
     FXMLLoader loader = new FXMLLoader((getClass().getResource("/clima/ui/DisplayData.fxml")));
     Parent root = loader.load();
 
     DisplayGUI displayGUI = loader.getController();
-    displayGUI.updateData(response,city);
-
+    List <ClimateData> list = new ArrayList<>();
+    for (int i = 0; i < multi_response.list.toArray().length; i+=8){
+        list.add(multi_response.list.get(i));
+    }
+    displayGUI.updateData(response,city,list);
     Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     stage.setScene(new Scene(root));
     stage.show();
