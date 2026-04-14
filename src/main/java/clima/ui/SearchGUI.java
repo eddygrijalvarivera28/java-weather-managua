@@ -1,6 +1,6 @@
 package clima.ui;
 
-import clima.API_Call;
+import clima.API.API_Call;
 import clima.models.ClimateData;
 import clima.models.Coord;
 import javafx.event.ActionEvent;
@@ -15,7 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class SearchGUI {
     //SCENE 1

@@ -1,0 +1,6 @@
+.letters-text {
+    -fx-font-family: "Montserrat";
+    -fx-text-fill: #ecf0f1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 4, 0, 0, 1);
+    -fx-font-size: 38px;
+}

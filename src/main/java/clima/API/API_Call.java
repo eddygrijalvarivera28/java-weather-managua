@@ -1,4 +1,4 @@
-package clima;
+package clima.API;
 
 import clima.models.ClimateData;
 import clima.models.ClimateDataResponse;

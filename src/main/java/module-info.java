@@ -13,4 +13,5 @@ module clima {
     exports clima.models;
     exports clima.ui;
     exports clima;
+    exports clima.API;
 }

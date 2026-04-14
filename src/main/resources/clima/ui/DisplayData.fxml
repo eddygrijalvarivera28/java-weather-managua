@@ -6,37 +6,66 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clima.ui.DisplayGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: radial-gradient(center 50% 50%, radius 90%, #1c2a48, #0b0f19);;" stylesheets="@letters.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clima.ui.DisplayGUI">
    <children>
-      <Text fx:id="cityText" layoutX="40.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prueba" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="519.2000122070312" AnchorPane.bottomAnchor="256.5" AnchorPane.leftAnchor="39.200000000000045" AnchorPane.rightAnchor="40.79998779296875">
+      <Text id="letras" fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Montserrat; -fx-font-size: 60px; -fx-font-weight: Bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 3);" styleClass="letras" text="ehsfefennfesj's Weather App" textOrigin="CENTER" wrappingWidth="933.5999755859375">
          <font>
-            <Font name="Franklin Gothic Demi Cond" size="70.0" />
+            <Font name="Franklin Gothic Demi Cond" size="46.0" />
          </font>
       </Text>
-      <GridPane alignment="CENTER" layoutX="150.0" layoutY="169.0">
-        <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <Pane layoutX="14.0" layoutY="171.0" prefHeight="335.0" prefWidth="526.0" style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-background-radius: 25; -fx-border-color: rgba(255, 255, 255, 0.2); -fx-border-radius: 25; -fx-border-width: 1;">
          <children>
-            <Text fx:id="texto_0_1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Text fx:id="texto_0_0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Text fx:id="texto_1_0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="1" />
-            <Text fx:id="texto_1_1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text fx:id="texto_1_2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ImageView fx:id="imagen_0_2" fitHeight="38.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+            <GridPane alignment="CENTER" layoutX="13.0" layoutY="16.0" prefHeight="304.0" prefWidth="495.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.00000610351563" minWidth="10.0" prefWidth="197.00000610351563" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.6000061035156" minWidth="6.599993896484364" prefWidth="6.599993896484364" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.2000030517578" minWidth="10.0" prefWidth="291.2000030517578" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="96.59998168945313" minHeight="6.199972534179693" prefHeight="54.000006103515624" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="96.59998168945313" minHeight="10.0" prefHeight="17.99999084472656" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="196.60002746582032" minHeight="10.0" prefHeight="185.20000915527345" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="103.00000610351563" minHeight="10.0" prefHeight="74.40001220703127" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="cityText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="letters-text" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES" />
+                  <Text fx:id="text_time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="letters-text" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.valignment="BASELINE" GridPane.vgrow="SOMETIMES" />
+                  <Text fx:id="text_weather_description" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 35px;" styleClass="letters-text" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                  <ImageView fx:id="imagen_0_2" fitHeight="196.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES" />
+                  <Text fx:id="text_main_temperature" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 35px;" styleClass="letters-text" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                     <fill>
+                        <LinearGradient endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.8631578683853149" green="0.8631578683853149" blue="0.8631578683853149" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
          </children>
-      </GridPane>
-      <Button fx:id="buttonBack" alignment="CENTER" contentDisplay="CENTER" layoutX="195.0" layoutY="269.0" mnemonicParsing="false" onAction="#PressButtonBack" text="rEGRESAR A CUANDO ERA FELIZ" textAlignment="CENTER">
+      </Pane>
+      <Button fx:id="buttonBack" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="555.0" mnemonicParsing="false" onAction="#PressButtonBack" text="rEGRESAR A CUANDO ERA FELIZ" textAlignment="CENTER">
          <font>
             <Font name="Impact" size="12.0" />
          </font>
